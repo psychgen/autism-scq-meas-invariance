@@ -1,0 +1,87 @@
+Title: CFA with 3 factors (SCQ subscales)
+DATA: FILE IS "N:/durable/projects/scq_efa/CFA/data_mplus_08_03_2023_miss.dat"; 
+VARIABLE: NAMES ARE 
+BARNid
+autismDX
+autismDX_new
+BARN_NR
+SEX
+NN159
+NN160
+NN161
+NN162
+NN163
+NN164
+NN165
+NN166
+NN167
+NN168
+NN151
+NN169
+NN170
+NN171
+NN172
+NN173 
+NN175 
+NN176 
+NN177 
+NN178 
+NN152
+NN179 
+NN180
+NN181
+NN182
+NN183
+NN184
+NN185
+NN186
+NN187
+NN188
+NN153
+NN189
+NN154
+NN155
+NN156
+NN157
+NN158
+MIDnum
+split50
+split_dx
+split_nodx
+split_female
+split_male
+split_nn150; 
+
+USEVARIABLES NN159-NN165 NN168-NN186 NN188-NN158;
+CATEGORICAL ARE NN159-NN158;
+MISSING .; 
+SUBPOPULATION ARE split_female==0; 
+
+CLUSTER = MIDnum;
+Analysis: TYPE = Complex
+
+MODEL:
+comm BY NN151;
+comm BY NN152;
+comm BY NN153;
+comm BY NN154;
+comm BY NN155;
+comm BY NN169-NN173;
+comm BY NN183-NN184;
+
+rrb BY NN156-NN157;
+rrb BY NN160-NN165;
+
+
+soc BY NN158;
+soc BY NN159;
+soc BY NN168;
+soc BY NN175-NN178;
+soc BY NN179-NN182;
+soc BY NN185-NN186;
+soc BY NN188;
+soc BY NN189;
+
+OUTPUT:
+residual; tech1; modindices; sampstat; standardized;
+TECH1; tech5; tech4; stdyx; modindices (all); sampstat; standardized;

@@ -1,0 +1,110 @@
+Title: CFA with 6 factors from EFA
+DATA: FILE IS "N:/durable/projects/scq_efa/CFA/data_mplus_06_03_2023_miss.dat"; 
+VARIABLE: NAMES ARE 
+BARNid
+autismDX
+BARN_NR
+preg_id
+SEX
+NN159
+NN160
+NN161
+NN162
+NN163
+NN164
+NN165
+NN166
+NN167
+NN168
+NN151
+NN169
+NN170
+NN171
+NN172
+NN173 
+NN175 
+NN176 
+NN177 
+NN178 
+NN152
+NN179 
+NN180
+NN181
+NN182
+NN183
+NN184
+NN185
+NN186
+NN187
+NN188
+NN153
+NN189
+NN154
+NN155
+NN156
+NN157
+NN158
+MIDnum
+split50
+split_dx
+split_nodx
+split_female
+split_male
+split_nn150; 
+
+USEVARIABLES NN159-NN158;
+CATEGORICAL ARE NN159-NN158;
+MISSING .;  
+SUBPOPULATION ARE split50==0; 
+
+CLUSTER = MIDnum;
+Analysis: TYPE = Complex
+
+MODEL:
+
+f2 BY NN157;
+f2 BY NN159;
+f2 BY NN160; 
+f2 BY NN161; 
+f2 BY NN162;
+f2 BY NN163;
+f2 BY NN164; 
+f2 BY NN165;
+f2 BY NN166; 
+f2 BY NN167;
+
+f1 BY NN152;
+f1 BY NN153;
+f1 BY NN154;
+f1 BY NN155;
+f1 BY NN156;
+
+f3 BY NN151;
+f3 BY NN158;
+f3 BY NN168;
+f3 BY NN175; 
+f3 BY NN176;
+f3 BY NN177; 
+f3 BY NN178; 
+f3 BY NN179;
+f3 BY NN180;
+f3 BY NN182;
+f3 BY NN185;
+f3 BY NN186;
+f3 BY NN187;
+f3 BY NN189;
+
+
+f4 BY NN169-NN173;
+f4 BY NN181;
+f4 BY NN183;
+
+
+play BY NN184;
+play BY NN188;
+
+
+
+OUTPUT:
+residual; tech1; modindices; sampstat; standardized;
+TECH1; tech5; tech4; stdyx; modindices (all); sampstat; standardized;

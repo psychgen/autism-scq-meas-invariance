@@ -1,0 +1,87 @@
+Title: CFA with 4 factors (Berument solution)
+DATA: FILE IS "N:/durable/projects/scq_efa/CFA/data_mplus_08_03_2023_miss.dat"; 
+VARIABLE: NAMES ARE 
+BARNid
+autismDX
+autismDX_new
+BARN_NR
+SEX
+NN159
+NN160
+NN161
+NN162
+NN163
+NN164
+NN165
+NN166
+NN167
+NN168
+NN151
+NN169
+NN170
+NN171
+NN172
+NN173 
+NN175 
+NN176 
+NN177 
+NN178 
+NN152
+NN179 
+NN180
+NN181
+NN182
+NN183
+NN184
+NN185
+NN186
+NN187
+NN188
+NN153
+NN189
+NN154
+NN155
+NN156
+NN157
+NN158
+MIDnum
+split50
+split_dx
+split_nodx
+split_female
+split_male
+split_nn150; 
+
+USEVARIABLES NN159-NN158;
+CATEGORICAL ARE NN159-NN158;
+MISSING .; 
+SUBPOPULATION ARE split_nodx==0; 
+
+CLUSTER = MIDnum;
+Analysis: TYPE = Complex
+
+MODEL:
+comm BY NN151;
+comm BY NN158;
+comm BY NN164;
+comm BY NN169;
+comm BY NN173;
+
+ablang BY NN152;
+ablang BY NN153;
+ablang BY NN154-NN156;
+
+rrb BY NN157;
+rrb BY NN159-NN163;
+rrb BY NN165;
+rrb BY NN167;
+
+social BY NN168;
+social BY NN166;
+social BY NN170-NN172;
+social BY NN175-NN178;
+social BY NN179-NN188;
+social BY NN189;
+OUTPUT:
+residual; tech1; modindices; sampstat; standardized;
+TECH1; tech5; tech4; stdyx; modindices (all); sampstat; standardized;
